@@ -12,11 +12,8 @@ let dither (img : image) : image =
   List.map
     (fun row ->
      List.map
-       (fun v -> if v > Random.float 1.
-                 then 1.
-                 else 0.) row)
-    img ;;
-  
+       (fun v -> if v > Random.float 1. then 1. else 0.) row) img ;;
+
 (* show the image *)
 let depict (img : image) : unit =
   Graphics.open_graph "";
@@ -27,7 +24,7 @@ let depict (img : image) : unit =
     let lvl = int_of_float (255. *. (1. -. v)) in 
     Graphics.set_color (Graphics.rgb lvl lvl lvl);
     Graphics.plot c (y - r) in
-    List.iteri (fun r row -> List.iteri (fun c pix -> depict_pix pix r c)
+    List.iteri (fun r row -> List.iteri (fun c pix -> depict_pix pix r c) 
                                         row) img;
   Unix.sleep 2; 
   Graphics.close_graph () ;;
